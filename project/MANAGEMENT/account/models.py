@@ -2,7 +2,7 @@
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db import models
+from django.utils import timezone
 
 class User(AbstractUser):
     ROLE_CHOICES = [
@@ -27,7 +27,6 @@ class User(AbstractUser):
     
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student_profile')
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student_profile')
     lrn = models.CharField(max_length=50, unique=True)
     level = models.CharField(max_length=10)
     section = models.CharField(max_length=50)
@@ -39,12 +38,7 @@ class Student(models.Model):
     def __str__(self):
         return f"{self.user.get_full_name()} - {self.level}-{self.section}"
 
-    photo = models.ImageField(upload_to='student_photos/')
-
-    def __str__(self):
-        return f"{self.user.get_full_name()} - {self.level}-{self.section}"
-
-
+   
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='teacher_profile')
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='teacher_profile')

@@ -174,9 +174,14 @@
 
 
     <div class="avatar">
-        <h2>Avatar</h2>
-        <p>Placeholder for avatar</p>
+    <h2>Avatar</h2>
+        {% if request.user.student_profile.photo %}
+          <img src="{{ request.user.student_profile.photo.url }}" alt="Student Avatar" style="width: 100px; border-radius: 50%;">
+        {% else %}
+            <p>No avatar uploaded.</p>
+    {% endif %}
     </div>
+
 
     <div class="calendar-container">
         <input type="text" id="calendar" placeholder="Select Date" readonly style="cursor: pointer;" />
