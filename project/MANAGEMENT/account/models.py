@@ -49,11 +49,3 @@ class Teacher(models.Model):
     def __str__(self):
         return f"{self.user.get_full_name()} ({self.department})"
 
-class Announcement(models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
-    date_posted = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.title
-
