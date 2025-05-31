@@ -180,7 +180,11 @@
 
     <div class="calendar-container">
         <input type="text" id="calendar" placeholder="Select Date" readonly style="cursor: pointer;" />
+        <form action="{% url 'classroom:student_calendar' %}" method="get" style="margin-top: 10px;">
+            <button type="submit">View Full Calendar</button>
+        </form>
     </div>
+
 
     <div class="announcement">
     <h2>Announcements</h2>
@@ -195,7 +199,11 @@
             <li>No announcements available.</li>
         {% endfor %}
     </ul>
+    <form action="{% url 'classroom:student_announcement' %}" method="get" style="margin-top: 10px;">
+        <button type="submit">View All Announcements</button>
+    </form>
 </div>
+
 
 
     <div class="name">
@@ -228,13 +236,16 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-    const attendanceData = {{ attendance_data|safe }};
+    const attendanceData = JSON.parse('{{ attendance_data|escapejs }}');
+    console.log(attendanceData);
+
     flatpickr("#calendar", {
         inline: true,
         defaultDate: "today",
         dateFormat: "Y-m-d",
         onDayCreate: function(dObj, dStr, fp, dayElem) {
             let date = dayElem.dateObj.toISOString().split('T')[0];
+            console.log("Checking date:", date, "record:", attendanceData[date]);
             let record = attendanceData[date];
             if (record?.status === "present") {
                 dayElem.style.backgroundColor = "#4caf50";  // Green
@@ -252,6 +263,7 @@
         }
     });
 </script>
+
 
 
 <!-- Modal -->
