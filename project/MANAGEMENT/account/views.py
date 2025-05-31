@@ -21,7 +21,7 @@ from datetime import date
 import json
 
 from .forms import StudentLoginForm, TeacherLoginForm
-from .models import Student, Teacher
+from .models import Student, Teacher, Announcement
 from classroom.models import Attendance, Grade, Badge, Class
 
 

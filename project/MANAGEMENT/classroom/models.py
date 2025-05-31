@@ -65,9 +65,9 @@ class Badge(models.Model):
 
     def __str__(self):
         return f"{self.type.capitalize()} for {self.student} in {self.class_obj}"
-
+    
 class Announcement(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
     content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
 
