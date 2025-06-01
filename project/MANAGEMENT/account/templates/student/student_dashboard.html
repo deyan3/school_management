@@ -196,9 +196,12 @@
     <ul>
         {% for announcement in announcements %}
             <li>
-                <strong>{{ announcement.title }}</strong>
-                <br>{{ announcement.content }}
-                <br><small>{{ announcement.date_posted|date:"M d, Y H:i" }}</small>
+                <strong>{{ announcement.title }}</strong><br>
+                {{ announcement.message }}<br>
+                <small>
+                    {{ announcement.class_obj.class_name }} - {{ announcement.class_obj.subject }}
+                    | {{ announcement.created_at|date:"M d, Y H:i" }}
+                </small>
             </li>
         {% empty %}
             <li>No announcements available.</li>

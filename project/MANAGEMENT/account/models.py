@@ -32,7 +32,7 @@ class Student(models.Model):
     section = models.CharField(max_length=50)
     parent_name = models.CharField(max_length=255)
     parent_email = models.EmailField()
-    parent_contact = models.CharField(max_length=20)
+    parent_contact = models.CharField(max_length=50)
     photo = models.ImageField(upload_to='student_photos/')
 
     def __str__(self):
