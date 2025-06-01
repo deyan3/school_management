@@ -10,6 +10,7 @@ from datetime import date
 from classroom.models import Badge  # adjust the path if it's in another app
 from django.views.decorators.csrf import csrf_exempt
 
+from classroom.models import Announcement
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
@@ -92,7 +93,7 @@ def student_dashboard(request):
     scores = list(radar_chart_data.values())
 
     # Announcements
-    announcements = Announcement.objects.order_by('-date_posted')[:10]
+    #announcements = Announcement.objects.order_by('-date_posted')[:10]
 
     context = {
         'attendance_data': json.dumps(attendance_data),  # dump to JSON string
@@ -100,7 +101,7 @@ def student_dashboard(request):
         'today': date.today(),
         'categories': json.dumps(categories),
         'scores': json.dumps(scores),
-        'announcements': announcements,
+        #'announcements': announcements,
     }
 
     return render(request, 'student/student_dashboard.html', context)

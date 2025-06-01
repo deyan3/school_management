@@ -18,7 +18,7 @@ def create_class(request):
             new_class = form.save(commit=False)
             new_class.teacher = teacher
             new_class.save()
-            return redirect('account:teacher_dashboard_view')
+            return redirect('account:teacher_dashboard')
     else:
         form = ClassForm()
 
