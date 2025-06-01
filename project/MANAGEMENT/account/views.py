@@ -21,7 +21,7 @@ from datetime import date
 import json
 
 from .forms import StudentLoginForm, TeacherLoginForm
-from .models import Student, Teacher, Announcement
+from .models import Student, Teacher
 from classroom.models import Attendance, Grade, Badge, Class
 
 
@@ -108,7 +108,7 @@ def student_dashboard(request):
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
-from classroom.models import Class, Badge, Announcement
+from classroom.models import Class, Badge
 from account.models import Teacher
 
 from django.db.models import Prefetch
@@ -116,7 +116,7 @@ from classroom.models import Enrollment
 from account.models import Student  # Ensure Student has a OneToOneField to User
 
 from django.db.models import Prefetch
-from classroom.models import Enrollment, Badge, Class, Announcement
+from classroom.models import Enrollment, Badge, Class
 from account.models import Student, Teacher
 
 @login_required
